@@ -1780,6 +1780,7 @@ class Mangahub {
         }
         catch (e) {
             console.log("hello world");
+            throw new Error(`${await this.getMhubAccess() }`)
             throw new Error(`f ${await this.getUserAgent()} ${response.data}`);
             throw new Error(`${e}`);
         }
