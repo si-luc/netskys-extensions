@@ -1442,7 +1442,7 @@ const MH_DOMAIN = 'https://mangahub.io';
 const MH_API_DOMAIN = 'https://api.mghubcdn.com/graphql';
 const MH_CDN_DOMAIN = 'https://img.mghubcdn.com/file/imghub';
 exports.MangahubInfo = {
-    version: '3.0.9',
+    version: '3.0.10',
     name: 'Mangahub',
     icon: 'icon.png',
     author: 'Netsky',
@@ -1695,6 +1695,8 @@ class Mangahub {
             data = JSON.parse(response.data);
         }
         catch (e) {
+            console.log('asdlkfj');
+            throw new Error(`fffff`);
             throw new Error(`${e}`);
         }
         if (data.data.genres?.length == 0)
@@ -1706,6 +1708,7 @@ class Mangahub {
         return [App.createTagSection({ id: '0', label: 'genres', tags: arrayTags.map(x => App.createTag(x)) })];
     }
     async getHomePageSections(sectionCallback) {
+        console.log("hello world 2");
         const request = App.createRequest({
             url: MH_API_DOMAIN,
             method: 'POST',
@@ -1776,7 +1779,8 @@ class Mangahub {
             (0, MangahubParser_1.parseHomeSections)(data, sectionCallback);
         }
         catch (e) {
-            throw new Error(`${response.data}`);
+            console.log("hello world");
+            throw new Error(`f ${response.data}`);
             throw new Error(`${e}`);
         }
     }
