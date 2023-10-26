@@ -1770,11 +1770,13 @@ class Mangahub {
         });
         const response = await this.requestManager.schedule(request, 1);
         try {
+            console.log("Hello World");
             console.log(reponse.data);
             const data = JSON.parse(response.data);\
             (0, MangahubParser_1.parseHomeSections)(data, sectionCallback);
         }
         catch (e) {
+            throw new Error(`${response.data}`);
             throw new Error(`${e}`);
         }
     }
